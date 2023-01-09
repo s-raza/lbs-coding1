@@ -1,10 +1,16 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+
+from database import db
+from init_data import add_data
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///lbs.sqlite3"
-db = SQLAlchemy(app)
+
+db.init_app(app)
 
 if __name__ == "__main__":
-    db.create_all()
+    with app.app_context():
+        db.drop_all()
+        db.create_all()
+        add_data()
     app.run(debug=True)
