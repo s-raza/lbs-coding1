@@ -38,8 +38,8 @@ def add_data(max_meters: int = 100, max_meter_readings: int = 50) -> None:
         max_meters = 10
 
     for i in range(1, max_meters + 1):
-        to_add = Meter(label=f"Meter_{i}")
-        db.session.add(to_add)
+        meter = Meter(label=f"Meter_{i}")
+        db.session.add(meter)
         db.session.flush()
         add_meter_data(i, max_meter_readings)
 
