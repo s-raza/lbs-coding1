@@ -9,4 +9,4 @@ if __name__ == "__main__":
         db.drop_all()
         db.create_all()
         add_data()
-    app.run(debug=True)
+    app.run(host="0.0.0.0", debug=True)
