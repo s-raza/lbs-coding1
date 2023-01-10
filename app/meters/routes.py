@@ -1,6 +1,6 @@
 from flask import Blueprint, Response, jsonify, render_template
 
-from app.models import Meter, MeterData
+from .models import Meter, MeterData
 
 meters_bp = Blueprint("meters", __name__)
 
