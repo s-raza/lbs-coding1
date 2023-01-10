@@ -1,11 +1,22 @@
+from dataclasses import dataclass
 from datetime import datetime
-from typing import List
+from typing import List, Optional
 
-from database import db
+from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy.model import DefaultMeta
+
+db = SQLAlchemy()
+
+BaseModel: DefaultMeta = db.Model
 
 
-class Meter(db.Model):
+@dataclass
+class Meter(BaseModel):
     __tablename__ = "meters"
+
+    label: str
+    meter_data: Optional[List["MeterData"]] = []
+    id: Optional[int] = None
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     label = db.Column(db.String(), nullable=False)
@@ -31,8 +42,14 @@ class Meter(db.Model):
         return self.__repr__()
 
 
-class MeterData(db.Model):
+@dataclass
+class MeterData(BaseModel):
     __tablename__ = "meter_data"
+
+    timestamp: DefaultMeta
+    value: float
+    meter_id: int
+    id: Optional[int] = None
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     timestamp = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
@@ -40,6 +57,16 @@ class MeterData(db.Model):
 
     meter_id = db.Column(db.Integer, db.ForeignKey("meters.id"), nullable=False)
     meter = db.relationship("Meter", back_populates="meter_data")
+
+    @classmethod
+    def find_by_meter_id(cls, meter_id: int) -> List["MeterData"]:
+        return (
+            cls.query.filter_by(meter_id=meter_id).order_by(cls.timestamp.asc()).all()
+        )
+
+    @classmethod
+    def find_all(cls) -> List["MeterData"]:
+        return cls.query.all()
 
     def __repr__(self) -> str:
         return (

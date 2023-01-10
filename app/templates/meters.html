@@ -3,7 +3,7 @@
    <head></head>
    <body>
       <h3>
-         <a href = "{{ url_for('all_meters') }}">Meters</a>
+         <a href = "{{ url_for('meters.all_meters') }}">Meters</a>
       </h3>
 
       <hr/>
@@ -23,7 +23,11 @@
             {% for meter in meters %}
                <tr>
                   <td>{{ meter.id }}</td>
-                  <td>{{ meter.label }}</td>
+                  <td>
+                     <a
+                        href = "{{ url_for('meters.meter_data', meter_id=meter.id) }}">{{ meter.label }}
+                     </a>
+                  </td>
                </tr>
             {% endfor %}
          </tbody>
