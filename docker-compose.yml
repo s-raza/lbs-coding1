@@ -5,6 +5,9 @@ services:
     container_name: lbs-app
     entrypoint: python start_app.py
     restart: always
+    environment:
+      - INIT_DATA__NUM_METERS=100
+      - INIT_DATA__NUM_METER_READINGS=50
     build:
       context: .
       dockerfile: Dockerfile
@@ -15,4 +18,4 @@ services:
       timeout: 5s
       retries: 10
     ports:
-      - 5000:5000
+      - ${APP__PORT}:${APP__PORT}

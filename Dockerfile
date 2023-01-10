@@ -32,6 +32,7 @@ RUN poetry install --no-root --no-dev
 
 # Install API application into the container
 COPY --chown=$APP_USR:$APP_GRP ./$LOCAL_DIR/app ./app
+COPY --chown=$APP_USR:$APP_GRP ./$LOCAL_DIR/.env ./.env
 COPY --chown=$APP_USR:$APP_GRP ./$LOCAL_DIR/start_app.py ./start_app.py
 
 # Become appusr
