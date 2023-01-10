@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head></head>
+   <body>
+      <h3>
+         <a href = "{{ url_for('all_meters') }}">Meters</a>
+      </h3>
+
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}
+      {%- endfor %}
+
+      <table>
+         <thead>
+            <tr>
+               <th>id</th>
+               <th>label</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for meter in meters %}
+               <tr>
+                  <td>{{ meter.id }}</td>
+                  <td>{{ meter.label }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </body>
+</html>
