@@ -1,8 +1,8 @@
 from flask import Flask
 
-from app.meters.routes import meters_bp
-from app.models import db
-from app.settings import cfg
+from .meters.routes import meters_bp
+from .models import db
+from .settings import cfg
 
 
 def create_app() -> Flask:

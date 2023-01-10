@@ -2,7 +2,7 @@ from flask import Blueprint, Response, jsonify, render_template
 
 from app.models import Meter, MeterData
 
-meters_bp = Blueprint("meters", __name__)
+meters_bp = Blueprint("meters", __name__, template_folder="templates")
 
 
 @meters_bp.route("/meters/")
