@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+
+  lbs-app:
+    container_name: lbs-app
+    entrypoint: python start_app.py
+    restart: always
+    environment:
+      - INIT_DATA__NUM_METERS=100
+      - INIT_DATA__NUM_METER_READINGS=500
+    build:
+      context: .
+      dockerfile: Dockerfile
+    healthcheck:
+      test: ls -l /proc/*/exe | grep python
+      start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    ports:
+      - ${APP__PORT}:${APP__PORT}
