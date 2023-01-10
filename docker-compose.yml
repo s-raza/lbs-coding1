@@ -7,7 +7,7 @@ services:
     restart: always
     environment:
       - INIT_DATA__NUM_METERS=100
-      - INIT_DATA__NUM_METER_READINGS=50
+      - INIT_DATA__NUM_METER_READINGS=500
     build:
       context: .
       dockerfile: Dockerfile
