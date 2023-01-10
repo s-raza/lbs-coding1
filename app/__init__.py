@@ -1,7 +1,7 @@
 from flask import Flask
 
-from .meters.models import db
 from .meters.routes import meters_bp
+from .models import db
 from .settings import cfg
 
 

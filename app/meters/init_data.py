@@ -3,9 +3,8 @@ from typing import List
 
 from faker import Faker
 
+from app.models import Meter, MeterData, db
 from app.settings import cfg
-
-from .models import Meter, MeterData, db
 
 
 def add_meter_data(meter_id: int, num_meter_readings: int) -> None:

@@ -4,7 +4,7 @@ from sqlalchemy_utils.functions import database_exists
 
 from app import create_app
 from app.meters.init_data import add_data
-from app.meters.models import db
+from app.models import db
 from app.settings import cfg
 
 app = create_app()
