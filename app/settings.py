@@ -2,7 +2,7 @@ from pydantic import BaseModel, BaseSettings
 
 
 class Database(BaseModel):
-    sqlite_url: str
+    sqlite_file_name: str
 
 
 class App(BaseModel):

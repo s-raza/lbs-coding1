@@ -1,3 +1,5 @@
+from sqlalchemy_utils.functions import database_exists
+
 from app import create_app
 from app.init_data import add_data
 from app.models import db
@@ -7,7 +9,7 @@ app = create_app()
 
 if __name__ == "__main__":
     with app.app_context():
-        db.drop_all()
-        db.create_all()
-        add_data(cfg.init_data.num_meters, cfg.init_data.num_meter_readings)
+        if not database_exists(f"sqlite:///instance/{cfg.db.sqlite_file_name}"):
+            db.create_all()
+            add_data(cfg.init_data.num_meters, cfg.init_data.num_meter_readings)
     app.run(host=cfg.app.host, port=cfg.app.port, debug=cfg.app.debug)
