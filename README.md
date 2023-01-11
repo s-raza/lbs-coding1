@@ -41,7 +41,7 @@
     Attaching to lbs-app
     lbs-app  | [2023-01-11 07:37:44,690] INFO in start_app: Creating database: lbs.sqlite3
     lbs-app  | [2023-01-11 07:37:44,722] INFO in start_app: Inserting meter data: meters: 100, readings per meter: 500
-    lbs-app  | [2023-01-11 07:37:58,451] INFO in start_app: Database created, meter data inserted in 13.76
+    lbs-app  | [2023-01-11 07:37:58,451] INFO in start_app: Database created, meter data inserted in 13.76s
     lbs-app  |  * Serving Flask app 'app'
     lbs-app  |  * Debug mode: on
     lbs-app  | WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.

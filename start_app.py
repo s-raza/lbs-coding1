@@ -23,5 +23,5 @@ if __name__ == "__main__":
             )
             add_data(cfg.init_data.num_meters, cfg.init_data.num_meter_readings)
             end_time = round(time.time() - start_time, 2)
-            app.logger.info(f"Database created, meter data inserted in {end_time}")
+            app.logger.info(f"Database created, meter data inserted in {end_time}s")
     app.run(host=cfg.app.host, port=cfg.app.port, debug=cfg.app.debug)
